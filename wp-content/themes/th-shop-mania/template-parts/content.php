@@ -12,7 +12,7 @@ if ((function_exists('has_post_thumbnail')) && (has_post_thumbnail())) {
 $th_shop_mania_pro_blog_layout = esc_html(get_theme_mod('th_shop_mania_pro_blog_layout','thsm-blog-layout-1'));
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class('thunk-post-article'); ?>>
-					<div class="post-content-outer-wrapper <?php echo esc_attr($no_thumb); ?>">
+				<div class="post-content-outer-wrapper <?php echo esc_attr($no_thumb); ?>">
 					<?php if ((function_exists('has_post_thumbnail')) && (has_post_thumbnail())) {?>
 						<div class="thunk-post-img-wrapper">
 							<div class="thunk-post-img">
@@ -24,11 +24,11 @@ $th_shop_mania_pro_blog_layout = esc_html(get_theme_mod('th_shop_mania_pro_blog_
 					<?php } ?>
 					<div class="thunk-posts-description ">
 						<div class="th-post-categ"><span><?php the_category(' '); ?></span></div>
-						<?php the_title( '<h2 class="entry-title thunk-post-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' ); ?>
+						<?php // the_title( '<h2 class="entry-title thunk-post-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' ); ?>
 
 						<div class="thunk-post-meta">
 						<div class="thunk-post-info">
-							<span><?php the_author_posts_link(); ?></span>
+							<span><?php the_author_posts_link(); ?></span> 
 						    
 						    <span><?php echo wp_kses_post(get_the_date()); ?></span>
 					     </div>
