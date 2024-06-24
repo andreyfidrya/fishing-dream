@@ -319,3 +319,49 @@ if ( ! function_exists( 'wp_body_open' ) ) {
 
 // Add block patterns
 require get_template_directory() . '/inc/block-pattern.php';
+
+function list_all_products(){
+    $args = array(
+        'post_type' => 'product',
+        'posts_per_page' => -1
+    );
+
+    $products = new WP_Query($args);
+
+    if($products->have_posts()):
+        echo '<ul>';
+        while($products->have_posts()): $products->the_post();
+            echo '<li><a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
+        endwhile;
+        echo '</ul>';
+    else:
+        echo 'Нет товаров.';
+    endif;
+
+    // Сбросим данные после цикла
+    wp_reset_postdata();
+}
+
+function generate_products_by_category($category_slug){
+	ob_start();
+
+	$args = array(
+		'product_cat' => $category_slug,
+		'posts_per_page' => -1,		
+	);
+
+	$term = get_term_by('slug', $category_slug, 'product_cat');
+	
+	echo "<strong> $term->name: </strong>";
+
+	$products = wc_get_products($args);	
+
+	foreach ($products as $product) {
+		$product_id = $product->get_id();
+		$product_name = $product->get_name();
+		$product_permalink = $product->get_permalink();
+		$product_price = $product->get_price();
+		echo '<li><a href="' . $product_permalink . '">' . $product_name . '</a>' . $product_price . '</li>';        
+	}
+
+}

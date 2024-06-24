@@ -33,7 +33,7 @@ else{
                         <div id="primary" class="primary-content-area"> 
                             <div class="primary-content-wrap">
                                 <main id="main" class="site-main" role="main">
-                                 <?php
+                                 <?php 
             if( have_posts()):
                 /* Start the Loop */
                 while ( have_posts() ) : the_post();
@@ -49,6 +49,9 @@ else{
                 get_template_part( 'template-parts/content', 'none' );
             endif;
 
+            generate_products_by_category('feeder-roads');
+            generate_products_by_category('spinning-roads');
+            generate_products_by_category('float-roads');
            
             ?>
         </main>
@@ -64,5 +67,6 @@ else{
                     </div> <!-- end main-area -->
                 </div> <!-- end content-wrap -->
             </div> 
-        </div> <!-- end content page-content -->
+        </div> <!-- end content page-content -->        
+        
 <?php get_footer();?>

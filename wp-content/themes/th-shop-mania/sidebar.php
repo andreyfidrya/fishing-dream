@@ -12,7 +12,7 @@ $sidebar = apply_filters( 'th_shop_mania_get_sidebar', 'sidebar-1' );
     <?php
     if ( is_active_sidebar($sidebar) ){
     dynamic_sidebar($sidebar);
-     }
+    }
       ?>
   </div>  <!-- sidebar-main End -->
 </div> <!-- sidebar-primary End -->                
